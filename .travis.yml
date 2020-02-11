@@ -1,0 +1,33 @@
+language: node_js
+node_js:
+  - '12'
+branches:
+  only:
+    - master
+    - develop
+    - '/^v.*$/'
+before_script:
+  - npm install
+before_deploy:
+  - npm run prerelease
+deploy:
+  - provider: releases
+    edge: true
+    skip_cleanup: true
+    api_key:
+      secure: ...
+    file: dist.zip
+    on:
+      branch: master
+      tags: true
+      repo: flekschas/...
+  - provider: npm
+    edge: true
+    skip_cleanup: true
+    email: code@lekschas.de
+    api_key:
+      secure: ...
+    on:
+      branch: master
+      tags: true
+      repo: flekschas/...
