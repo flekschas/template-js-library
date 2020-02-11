@@ -26,18 +26,18 @@ const configurator = (file, format, plugins = []) => ({
   external: []
 });
 
-const devConfig = configurator('dist/regl-scatterplot.js', 'umd', [
+const devConfig = configurator('dist/package-name.js', 'umd', [
   babel(),
   filesize(),
   visualizer()
 ]);
 
-const prodConfig = configurator('dist/regl-scatterplot.min.js', 'umd', [
+const prodConfig = configurator('dist/package-name.min.js', 'umd', [
   babel(),
   terser()
 ]);
 
-const esmConfig = configurator('dist/regl-scatterplot.esm.js', 'esm', [
+const esmConfig = configurator('dist/package-name.esm.js', 'esm', [
   filesize()
 ]);
 
